@@ -1,0 +1,197 @@
+{{ block title }}
+    Zwei Szenarien
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    .scenario-container {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+    .scenario-intro {
+        font-size: 1.05em;
+        line-height: 1.7;
+        margin-bottom: 24px;
+    }
+    .scenario-box {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px 24px;
+        margin-bottom: 20px;
+        background: #fafafa;
+    }
+    .scenario-box h4 {
+        margin: 0 0 12px 0;
+        font-size: 1.1em;
+    }
+    .scenario-box p {
+        line-height: 1.65;
+        margin-bottom: 10px;
+    }
+    .scenario-box p:last-child {
+        margin-bottom: 0;
+    }
+    .both-note {
+        font-weight: 700;
+        font-size: 1.05em;
+        line-height: 1.65;
+        margin: 24px 0;
+    }
+    .quiz-section {
+        margin-top: 32px;
+        border-top: 2px solid #e0e0e0;
+        padding-top: 24px;
+    }
+    .quiz-section h3 {
+        margin: 0 0 8px 0;
+        font-size: 1.1em;
+    }
+    .quiz-instruction {
+        margin-bottom: 18px;
+        color: #555;
+    }
+    .quiz-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .quiz-table td {
+        padding: 10px 14px;
+        border-bottom: 1px solid #eee;
+        vertical-align: middle;
+    }
+    .quiz-table td:first-child {
+        width: 40px;
+        text-align: center;
+    }
+    .quiz-table tr:hover {
+        background: #f5f5f5;
+    }
+    .quiz-checkbox {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+    }
+</style>
+{{ endblock }}
+
+{{ block content }}
+<div class="scenario-container">
+
+    <p class="scenario-intro">
+        Bitte denken Sie über die folgenden zwei hypothetischen Szenarien nach.
+    </p>
+
+    <div class="scenario-box">
+        <h4>Szenario 1: Nike behält bestehende Lieferantenpartnerschaft bei</h4>
+        <p>
+            Vor vier Wochen, am 13. Februar 2026, gab Nike Inc. die Fortsetzung
+            seiner Partnerschaft mit dem großen Polyester-Lieferanten Toray Industries Inc.
+            bekannt, um die bestehende Lieferkette beizubehalten. Die Fortsetzung der
+            Partnerschaft soll die aktuelle Kostenstruktur des Unternehmens aufrechterhalten.
+            Branchenexperten waren von der Ankündigung nicht überrascht, da Kontinuität in
+            Lieferantenbeziehungen in der Branche gängige Praxis ist.
+        </p>
+    </div>
+
+    <div class="scenario-box">
+        <h4>Szenario 2: Nike sichert sich kostensparende Partnerschaft</h4>
+        <p>
+            Vor vier Wochen, am 13. Februar 2026, gab Nike Inc. eine neue strategische
+            Partnerschaft mit dem führenden Recycling-Polyester-Lieferanten Unifi Inc.
+            bekannt, die darauf abzielt, die Rohstoffkosten um 20&nbsp;% zu senken.
+            Es wird erwartet, dass der Deal erhebliche Auswirkungen auf Nikes
+            Geschäftsergebnis haben und die Produkte preislich wettbewerbsfähiger
+            machen wird. Branchenexperten waren von der Nachricht positiv überrascht
+            und nannten sie einen „unerwarteten Erfolg" für das Unternehmen. Sie
+            prognostizierten, dass der Schritt Nikes Marktposition in der
+            Sportbekleidungsbranche deutlich stärken wird.
+        </p>
+    </div>
+
+    <p class="both-note">
+        In beiden Szenarien wurde die Ankündigung vor vier Wochen gemacht und erhielt
+        viel Aufmerksamkeit von Börsenhändlern.
+    </p>
+
+    <!-- Quiz -->
+    <div class="quiz-section">
+        <h3>Verständnisfragen</h3>
+        <p class="quiz-instruction">
+            Bitte wählen Sie alle korrekten Aussagen aus der folgenden Liste aus.
+            Mindestens eine Aussage ist korrekt. Wählen Sie keine falschen Aussagen aus.
+        </p>
+
+        <table class="quiz-table">
+            <tr>
+                <td><input type="checkbox" class="quiz-checkbox" id="cb1"></td>
+                <td>Die Szenarien handeln von einer Klage gegen Nike.</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="quiz-checkbox" id="cb2"></td>
+                <td>Die Szenarien handeln von Nikes Lieferkettenpartnerschaften.</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="quiz-checkbox" id="cb3"></td>
+                <td>In beiden Szenarien wurde die Ankündigung vor vier Wochen gemacht.</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="quiz-checkbox" id="cb4"></td>
+                <td>In beiden Szenarien wurde die Ankündigung heute gemacht.</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="quiz-checkbox" id="cb5"></td>
+                <td>In beiden Szenarien hat die Ankündigung keine große Aufmerksamkeit bei Börsenhändlern erhalten.</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="quiz-checkbox" id="cb6"></td>
+                <td>In beiden Szenarien hat die Ankündigung große Aufmerksamkeit bei Börsenhändlern erhalten.</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="quiz-checkbox" id="cb7"></td>
+                <td>In Szenario 1 behält Nike seine bestehenden Lieferpartnerschaften bei. In Szenario 2 schließt Nike eine neue Lieferpartnerschaft ab.</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="quiz-checkbox" id="cb8"></td>
+                <td>In Szenario 1 schließt Nike eine neue Lieferpartnerschaft ab. In Szenario 2 behält Nike seine bestehenden Lieferpartnerschaften bei.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Hidden oTree form fields -->
+    <input type="hidden" name="equ_quiz_1" id="hid1" value="False">
+    <input type="hidden" name="equ_quiz_2" id="hid2" value="False">
+    <input type="hidden" name="equ_quiz_3" id="hid3" value="False">
+    <input type="hidden" name="equ_quiz_4" id="hid4" value="False">
+    <input type="hidden" name="equ_quiz_5" id="hid5" value="False">
+    <input type="hidden" name="equ_quiz_6" id="hid6" value="False">
+    <input type="hidden" name="equ_quiz_7" id="hid7" value="False">
+    <input type="hidden" name="equ_quiz_8" id="hid8" value="False">
+
+    {{ next_button }}
+
+</div>
+{{ endblock }}
+
+{{ block scripts }}
+<script>
+    // Sync each checkbox to its hidden field
+    for (var i = 1; i <= 8; i++) {
+        (function(idx) {
+            var cb = document.getElementById('cb' + idx);
+            var hid = document.getElementById('hid' + idx);
+            cb.addEventListener('change', function() {
+                hid.value = cb.checked ? 'True' : 'False';
+            });
+        })(i);
+    }
+
+    // Ensure values are synced on form submit
+    document.querySelector('form').addEventListener('submit', function() {
+        for (var i = 1; i <= 8; i++) {
+            var cb = document.getElementById('cb' + i);
+            var hid = document.getElementById('hid' + i);
+            hid.value = cb.checked ? 'True' : 'False';
+        }
+    });
+</script>
+{{ endblock }}

@@ -1,0 +1,32 @@
+{% block title %}
+    Herzlich Willkommen!
+{% endblock %}
+
+{% block content %}
+    <!-- This page auto-submits using the consent choice saved
+         by the Room welcome page. The participant never sees it. -->
+    <input type="hidden" name="consent" id="id_consent" value="">
+    {{ next_button }}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var consent = localStorage.getItem('otree_consent_given');
+        localStorage.removeItem('otree_consent_given');
+
+        var field = document.getElementById('id_consent');
+        if (consent === '1') {
+            field.value = 'True';
+        } else {
+            field.value = 'False';
+        }
+
+        // Auto-submit the form
+        var form = document.querySelector('form');
+        if (form) {
+            form.submit();
+        }
+    });
+</script>
+{% endblock %}

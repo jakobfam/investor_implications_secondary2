@@ -1,0 +1,216 @@
+{{ block title }}
+    Renditeerwartungen – DAX
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    .intro-box {
+        max-width: 680px;
+        margin: 0 auto 28px auto;
+        padding: 20px 24px;
+        background: #f5f7fa;
+        border-left: 4px solid #1565c0;
+        border-radius: 6px;
+        line-height: 1.7;
+        color: #333;
+    }
+    .intro-box p {
+        margin: 0 0 10px 0;
+    }
+    .intro-box p:last-child {
+        margin-bottom: 0;
+    }
+    .question-section {
+        max-width: 680px;
+        margin: 0 auto 24px auto;
+    }
+    .question-section label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 8px;
+    }
+    .unit-hint {
+        color: #777;
+        font-size: 0.9em;
+        margin-top: 4px;
+    }
+    .confidence-section {
+        max-width: 680px;
+        margin: 0 auto 24px auto;
+    }
+    .confidence-question {
+        font-weight: 700;
+        font-size: 1.02em;
+        margin-bottom: 16px;
+        line-height: 1.5;
+    }
+    .confidence-scale {
+        display: flex;
+        gap: 0;
+        max-width: 660px;
+    }
+    .confidence-option {
+        flex: 1;
+        text-align: center;
+        padding: 12px 4px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        transition: background 0.15s;
+        user-select: none;
+    }
+    .confidence-option:first-child {
+        border-radius: 6px 0 0 6px;
+    }
+    .confidence-option:last-child {
+        border-radius: 0 6px 6px 0;
+    }
+    .confidence-option:hover {
+        background: #e3f2fd;
+    }
+    .confidence-option.selected {
+        background: #1565c0;
+        color: #fff;
+        border-color: #1565c0;
+    }
+    .confidence-option input[type="radio"] {
+        display: none;
+    }
+    .confidence-number {
+        font-size: 1.1em;
+        font-weight: 600;
+    }
+    .confidence-label-text {
+        font-size: 0.78em;
+        display: block;
+        margin-top: 4px;
+        color: inherit;
+    }
+</style>
+{{ endblock }}
+
+{{ block content }}
+
+<div class="intro-box">
+    <p>
+        Im Folgenden möchten wir Ihre Einschätzung zur zukünftigen Entwicklung
+        des <strong>DAX</strong> erfahren. Der DAX (Deutscher Aktienindex) ist
+        der wichtigste deutsche Aktienindex und bildet die Wertentwicklung der
+        40 größten und umsatzstärksten Unternehmen ab, die an der Frankfurter
+        Wertpapierbörse gelistet sind.
+    </p>
+    <p>
+        Bitte geben Sie Ihre beste Schätzung ab – es gibt keine richtigen oder
+        falschen Antworten.
+    </p>
+</div>
+
+<div class="question-section">
+    {{ formfield 'return_point_estimate' }}
+    <p class="unit-hint">
+        Bitte geben Sie einen Wert in Prozent an (z.&nbsp;B. 8 für +8&nbsp;% oder -5 für -5&nbsp;%).
+    </p>
+</div>
+
+<div class="confidence-section">
+    <p class="confidence-question">
+        Wie sicher sind Sie sich, dass die Rendite tatsächlich zwischen 
+        <span id="lower-bound">X</span> und 
+        <span id="upper-bound">X</span> sein wird?
+        Bitte antworten Sie auf einer Skala von 0% (überhaupt nicht sicher)
+        bis 100% (vollkommen sicher).
+    </p>
+
+    <div class="confidence-scale">
+
+        <label class="confidence-option" id="conf-label-0">
+            <input type="radio" name="return_confidence" value="0" onchange="selectConfidence(0)">
+            <span class="confidence-number">0</span>
+            <span class="confidence-label-text">Überhaupt<br>nicht sicher</span>
+        </label>
+        <label class="confidence-option" id="conf-label-1">
+            <input type="radio" name="return_confidence" value="1" onchange="selectConfidence(1)">
+            <span class="confidence-number">10</span>
+        </label>
+        <label class="confidence-option" id="conf-label-2">
+            <input type="radio" name="return_confidence" value="2" onchange="selectConfidence(2)">
+            <span class="confidence-number">20</span>
+        </label>
+        <label class="confidence-option" id="conf-label-3">
+            <input type="radio" name="return_confidence" value="3" onchange="selectConfidence(3)">
+            <span class="confidence-number">30</span>
+        </label>
+        <label class="confidence-option" id="conf-label-4">
+            <input type="radio" name="return_confidence" value="4" onchange="selectConfidence(4)">
+            <span class="confidence-number">40</span>
+        </label>
+        <label class="confidence-option" id="conf-label-5">
+            <input type="radio" name="return_confidence" value="5" onchange="selectConfidence(5)">
+            <span class="confidence-number">50</span>
+        </label>
+        <label class="confidence-option" id="conf-label-6">
+            <input type="radio" name="return_confidence" value="6" onchange="selectConfidence(6)">
+            <span class="confidence-number">60</span>
+        </label>
+        <label class="confidence-option" id="conf-label-7">
+            <input type="radio" name="return_confidence" value="7" onchange="selectConfidence(7)">
+            <span class="confidence-number">70</span>
+        </label>
+        <label class="confidence-option" id="conf-label-8">
+            <input type="radio" name="return_confidence" value="8" onchange="selectConfidence(8)">
+            <span class="confidence-number">80</span>
+        </label>
+        <label class="confidence-option" id="conf-label-9">
+            <input type="radio" name="return_confidence" value="9" onchange="selectConfidence(9)">
+            <span class="confidence-number">90</span>
+        </label>
+        <label class="confidence-option" id="conf-label-10">
+            <input type="radio" name="return_confidence" value="10" onchange="selectConfidence(10)">
+            <span class="confidence-number">100</span>
+            <span class="confidence-label-text">Vollkommen<br>sicher</span>
+        </label>
+    </div>
+</div>
+
+{{ next_button }}
+{{ endblock }}
+
+{{ block scripts }}
+<script>
+    function selectConfidence(val) {
+        document.querySelectorAll('.confidence-option').forEach(function(el) {
+            el.classList.remove('selected');
+        });
+        document.getElementById('conf-label-' + val).classList.add('selected');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var checked = document.querySelector('input[name="return_confidence"]:checked');
+        if (checked) {
+            selectConfidence(checked.value);
+        }
+
+        const input = document.querySelector('input[name="return_point_estimate"]');
+        const lowerSpan = document.getElementById('lower-bound');
+        const upperSpan = document.getElementById('upper-bound');
+
+        function updateBounds() {
+            let val = parseFloat(input.value);
+
+            if (!isNaN(val)) {
+                let lower = Math.round(val - 5);
+                let upper = Math.round(val + 5);
+
+                lowerSpan.textContent = lower + "%";
+                upperSpan.textContent = upper + "%";
+            } else {
+                lowerSpan.textContent = "X";
+                upperSpan.textContent = "X";
+            }
+        }
+
+        if (input) {
+            input.addEventListener('input', updateBounds);
+        }
+    });
+</script>
+{{ endblock }}

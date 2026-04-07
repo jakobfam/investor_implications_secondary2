@@ -1,0 +1,61 @@
+{{ block title }}
+    Frage 3 von 3
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    .tooltip-trigger {
+        text-decoration: underline dotted;
+        cursor: help;
+        position: relative;
+    }
+    .tooltip-trigger .tooltip-box {
+        display: none;
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 280px;
+        background: #f0f4ff;
+        border: 1px solid #b0c4de;
+        border-radius: 6px;
+        padding: 10px 12px;
+        font-size: 0.9em;
+        font-weight: normal;
+        font-style: normal;
+        line-height: 1.5;
+        color: #333;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        z-index: 10;
+    }
+    .tooltip-trigger:hover .tooltip-box { display: block; }
+</style>
+{{ endblock }}
+
+{{ block content }}
+    <p>
+        <b>Sie kaufen einen Gebrauchtwagen von einer Privatperson über
+        <span class="tooltip-trigger"><u>mobile.de</u><span class="tooltip-box">
+                mobile.de ist eine Webseite, auf der Gebrauchtwagen angeboten und gekauft werden können.
+            </span></span>.</b>
+    </p>
+
+    <p>Geben Sie bitte für diese Transaktion an:</p>
+
+    <table class="table" style="max-width:600px;">
+        <thead>
+            <tr>
+                <th style="width:50%;">Wer erhält das Geld?</th>
+                <th style="width:50%;">Wer erhält das Auto?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ formfield 'q3_money' }}</td>
+                <td>{{ formfield 'q3_product' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{ next_button }}
+{{ endblock }}

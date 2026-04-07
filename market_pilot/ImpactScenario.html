@@ -1,0 +1,65 @@
+{{ block title }}
+    Nachhaltiges Investment
+{{ endblock }}
+
+{{ block content }}
+
+<p style="margin-bottom:12px;">
+    <strong>Bitte lesen Sie das folgende Szenario aufmerksam durch:</strong>
+</p>
+
+<div style="
+    background:#fafafa;
+    border:1px solid #e0e0e0;
+    border-radius:8px;
+    padding:20px;
+    margin-bottom:24px;
+">
+
+    <p style="margin-top:0;">
+        <strong>Person A</strong> legt
+        <strong>10.000&nbsp;EUR</strong>
+        in den Fonds <em>MSCI World ESG Screened Index</em> an.
+    </p>
+
+    <p>
+        In der Finanzbranche wird dieses Investment als
+        <strong>&ouml;kologisch nachhaltiges Investment</strong> bezeichnet.
+    </p>
+
+    <hr style="border:none; border-top:1px solid #ddd; margin:16px 0;">
+
+    <p style="margin-bottom:8px;">
+        <strong>Der MSCI World ESG Screened Index</strong>:
+    </p>
+
+    <ul style="margin-top:0; padding-left:20px;">
+        <li>Investiert in &uuml;ber 1.200 Unternehmen aus 23 Industriel&auml;ndern.</li>
+        <li>
+            Schlie&szlig;t Unternehmen aus, die mit kontroversen Gesch&auml;ftsfeldern
+            (z.&nbsp;B. Waffen, Tabak, Palmöl, arktisches &Ouml;l &amp; Gas,
+            Kohle- und &Ouml;lsandf&ouml;rderung) in Verbindung stehen, gegen die Prinzipien
+            des <em>UN Global Compact</em> versto&szlig;en oder in schwerwiegende
+            Umwelt- und Biodiversit&auml;tskontroversen verwickelt sind.
+        </li>
+    </ul>
+
+    <hr style="border:none; border-top:1px solid #ddd; margin:16px 0;">
+
+    <p style="margin-bottom:0;">
+        Alternativ h&auml;tte Person A das Geld auch in den Fonds
+        <em>MSCI World Index</em> investieren k&ouml;nnen.
+        Dieser Fonds beinhaltet &ndash; im Gegensatz zum
+        <em>MSCI World ESG Screened Index</em> &ndash; auch Unternehmen aus
+        kontroversen Gesch&auml;ftsfeldern.
+    </p>
+
+</div>
+
+{{ formfield 'believes_co2_saved' }}
+
+<div style="margin-top:20px;">
+    {{ next_button }}
+</div>
+
+{{ endblock }}

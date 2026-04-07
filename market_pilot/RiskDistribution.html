@@ -1,0 +1,222 @@
+{{ block title }}
+    Renditeverteilung – DAX
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    .intro-box {
+        max-width: 720px;
+        margin: 0 auto 24px auto;
+        padding: 20px 24px;
+        background: #f5f7fa;
+        border-left: 4px solid #1565c0;
+        border-radius: 6px;
+        line-height: 1.7;
+        color: #333;
+    }
+    .dist-table {
+        max-width: 720px;
+        margin: 0 auto 20px auto;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    .dist-table th {
+        text-align: left;
+        padding: 10px 12px;
+        background: #e3f2fd;
+        border-bottom: 2px solid #1565c0;
+        font-size: 0.95em;
+    }
+    .dist-table td {
+        padding: 8px 12px;
+        border-bottom: 1px solid #e0e0e0;
+        vertical-align: middle;
+    }
+    .dist-table tr:hover {
+        background: #f5f5f5;
+    }
+    .dist-table td:first-child {
+        font-weight: 500;
+        white-space: nowrap;
+        width: 180px;
+    }
+    .dist-table input[type="number"] {
+        width: 80px;
+        padding: 6px 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 1em;
+    }
+    .dist-table td:last-child {
+        color: #888;
+        font-size: 0.9em;
+    }
+    .sum-row {
+        max-width: 720px;
+        margin: 0 auto 24px auto;
+        padding: 12px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 1.05em;
+        text-align: center;
+        transition: background 0.2s, color 0.2s;
+    }
+    .sum-ok {
+        background: #e8f5e9;
+        color: #2e7d32;
+    }
+    .sum-bad {
+        background: #fbe9e7;
+        color: #c62828;
+    }
+</style>
+{{ endblock }}
+
+{{ block content }}
+
+<div class="intro-box">
+    <p>
+        Bitte schätzen Sie nun, wie wahrscheinlich es ist, dass die Rendite
+        des <strong>DAX</strong> in den nächsten <strong>12 Monaten</strong>
+        in die folgenden Bereiche fällt.
+    </p>
+    <p>
+        Verteilen Sie insgesamt <strong>100 Wahrscheinlichkeitspunkte</strong>
+        auf die Kategorien. Jeder Punkt entspricht einer Wahrscheinlichkeit
+        von 1&nbsp;%.
+    </p>
+</div>
+
+<table class="dist-table">
+    <thead>
+        <tr>
+            <th>Renditebereich</th>
+            <th>Wahrscheinlichkeit</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Unter -30&nbsp;%</td>
+            <td><input type="number" name="return_bin_below_minus30" id="id_return_bin_below_minus30" min="0" max="100"></td>
+            <td>Punkte</td>
+        </tr>
+        <tr>
+            <td>-30&nbsp;% bis -20&nbsp;%</td>
+            <td><input type="number" name="return_bin_minus30_minus20" id="id_return_bin_minus30_minus20" min="0" max="100"></td>
+            <td>Punkte</td>
+        </tr>
+        <tr>
+            <td>-20&nbsp;% bis -10&nbsp;%</td>
+            <td><input type="number" name="return_bin_minus20_minus10" id="id_return_bin_minus20_minus10" min="0" max="100"></td>
+            <td>Punkte</td>
+        </tr>
+        <tr>
+            <td>-10&nbsp;% bis -5&nbsp;%</td>
+            <td><input type="number" name="return_bin_minus10_minus5" id="id_return_bin_minus10_minus5" min="0" max="100"></td>
+            <td>Punkte</td>
+        </tr>
+        <tr>
+            <td>-5&nbsp;% bis 0&nbsp;%</td>
+            <td><input type="number" name="return_bin_minus5_0" id="id_return_bin_minus5_0" min="0" max="100"></td>
+            <td>Punkte</td>
+        </tr>
+        <tr>
+            <td>0&nbsp;% bis 5&nbsp;%</td>
+            <td><input type="number" name="return_bin_0_5" id="id_return_bin_0_5" min="0" max="100"></td>
+            <td>Punkte</td>
+        </tr>
+        <tr>
+            <td>5&nbsp;% bis 10&nbsp;%</td>
+            <td><input type="number" name="return_bin_5_10" id="id_return_bin_5_10" min="0" max="100"></td>
+            <td>Punkte</td>
+        </tr>
+        <tr>
+            <td>10&nbsp;% bis 15&nbsp;%</td>
+            <td><input type="number" name="return_bin_10_15" id="id_return_bin_10_15" min="0" max="100"></td>
+            <td>Punkte</td>
+        </tr>
+        <tr>
+            <td>15&nbsp;% bis 20&nbsp;%</td>
+            <td><input type="number" name="return_bin_15_20" id="id_return_bin_15_20" min="0" max="100"></td>
+            <td>Punkte</td>
+        </tr>
+        <tr>
+            <td>20&nbsp;% bis 30&nbsp;%</td>
+            <td><input type="number" name="return_bin_20_30" id="id_return_bin_20_30" min="0" max="100"></td>
+            <td>Punkte</td>
+        </tr>
+        <tr>
+            <td>Über 30&nbsp;%</td>
+            <td><input type="number" name="return_bin_above_30" id="id_return_bin_above_30" min="0" max="100"></td>
+            <td>Punkte</td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="sum-display" class="sum-row sum-bad">
+    Summe: <span id="sum-value">0</span> / 100
+</div>
+
+{{ next_button }}
+
+{{ endblock }}
+
+{{ block scripts }}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const fields = [
+            'return_bin_below_minus30',
+            'return_bin_minus30_minus20',
+            'return_bin_minus20_minus10',
+            'return_bin_minus10_minus5',
+            'return_bin_minus5_0',
+            'return_bin_0_5',
+            'return_bin_5_10',
+            'return_bin_10_15',
+            'return_bin_15_20',
+            'return_bin_20_30',
+            'return_bin_above_30',
+        ];
+
+        // Set empty inputs to 0 (preserve_unsubmitted_inputs may have
+        // already restored non-zero values before DOMContentLoaded fires,
+        // so we only touch inputs that are still blank).
+        fields.forEach(function (f) {
+            const el = document.getElementById('id_' + f);
+            if (el && el.value === '') {
+                el.value = 0;
+            }
+        });
+
+        function updateSum() {
+            let total = 0;
+            fields.forEach(function (f) {
+                const el = document.getElementById('id_' + f);
+                if (el) {
+                    const val = parseInt(el.value, 10);
+                    if (!isNaN(val)) total += val;
+                }
+            });
+            const display = document.getElementById('sum-display');
+            const span = document.getElementById('sum-value');
+            span.textContent = total;
+            if (total === 100) {
+                display.className = 'sum-row sum-ok';
+            } else {
+                display.className = 'sum-row sum-bad';
+            }
+        }
+
+        fields.forEach(function (f) {
+            const el = document.getElementById('id_' + f);
+            if (el) {
+                el.addEventListener('input', updateSum);
+            }
+        });
+
+        updateSum();
+    });
+</script>
+{{ endblock }}

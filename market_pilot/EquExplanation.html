@@ -1,0 +1,182 @@
+{{ block title }}
+    Ihre Erklärung
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    .explanation-container {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+
+     /* ── Collapsible scenario recap ──────────────────────── */
+    .recap-section {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 28px;
+        background: #fafafa;
+    }
+    .recap-scenario-toggle {
+        padding: 12px 18px 4px 18px;
+        cursor: pointer;
+        user-select: none;
+        line-height: 1.5;
+    }
+    .recap-scenario-toggle:hover {
+        background: #f0f0f0;
+    }
+    /* Die Klasse bleibt im CSS für die Struktur, das Rote machen wir im HTML */
+    .recap-header-label {
+        padding: 12px 18px;
+        background: #f0f0f0;
+        border-bottom: 1px solid #ccc;
+        font-weight: bold;
+        border-radius: 8px 8px 0 0;
+    }
+    .recap-arrow {
+        display: inline-block;
+        width: 16px;
+        font-size: 0.85em;
+        transition: transform 0.15s;
+    }
+    .recap-detail {
+        display: none;
+        padding: 4px 18px 12px 34px;
+        line-height: 1.6;
+        font-size: 0.93em;
+        color: #444;
+    }
+    .recap-detail.open {
+        display: block;
+    }
+    .recap-note {
+        font-style: italic;
+        color: #555;
+    }
+
+    /* ── Investment recap ────────────────────────────────── */
+    .investment-recap {
+        background: #f5f5f5;
+        border-left: 4px solid #1565c0;
+        padding: 16px 20px;
+        margin-bottom: 24px;
+        line-height: 1.65;
+        font-size: 0.98em;
+    }
+    .investment-recap ul {
+        margin: 8px 0 0 20px;
+        padding: 0;
+    }
+    .investment-recap li {
+        margin-bottom: 4px;
+    }
+
+    /* ── Previous response highlight ─────────────────────── */
+    .previous-response {
+        font-size: 1.05em;
+        line-height: 1.7;
+        margin-bottom: 24px;
+    }
+    .previous-response strong {
+        background: #fff9c4;
+        padding: 2px 6px;
+        border-radius: 3px;
+    }
+
+    /* ── Text area ───────────────────────────────────────── */
+    .explanation-prompt {
+        font-weight: 700;
+        font-size: 1.05em;
+        margin-bottom: 12px;
+    }
+    /* oTree standard field styling */
+    .otree-form-errors {
+        color: #b71c1c;
+    }
+</style>
+{{ endblock }}
+
+{{ block content }}
+<div class="explanation-container">
+
+    <div class="recap-section">
+        <div class="recap-header-label">
+            <span style="color: red;">Die zwei Szenarien ansehen</span> (klicken für ausführliche Beschreibung)
+        </div>
+        
+        <div class="recap-scenario-toggle" onclick="toggleScenario(1)">
+            <span class="recap-arrow" id="arrow-s1">&#9654;</span>
+            <strong>Szenario 1: Nike behält bestehende Lieferantenpartnerschaft bei</strong>
+        </div>
+        <div class="recap-detail" id="detail-s1">
+            <p>Nike gab die Fortsetzung seiner Partnerschaft mit dem Polyester-Lieferanten Toray Industries Inc. bekannt, um die bestehende Lieferkette beizubehalten. Die Fortsetzung soll die aktuelle Kostenstruktur aufrechterhalten. Branchenexperten waren nicht überrascht.</p>
+        </div>
+
+        <div class="recap-scenario-toggle" onclick="toggleScenario(2)">
+            <span class="recap-arrow" id="arrow-s2">&#9654;</span>
+            <strong>Szenario 2: Nike sichert sich kostensparende Partnerschaft</strong>
+        </div>
+        <div class="recap-detail" id="detail-s2">
+            <p>Nike gab eine neue strategische Partnerschaft mit dem Recycling-Polyester-Lieferanten Unifi Inc. bekannt, die darauf abzielt, die Rohstoffkosten um 20&nbsp;% zu senken. Branchenexperten waren positiv überrascht und nannten es einen „unerwarteten Erfolg".</p>
+        </div>
+
+        <p class="recap-note" style="padding: 8px 18px 14px 18px;">
+            Die Ankündigungen wurden vor vier Wochen gemacht und erhielten viel Aufmerksamkeit.
+        </p>
+    </div>
+
+    <p style="color: #555;">Für die folgende Investition …</p>
+    <div class="investment-recap">
+        <ul>
+            <li>Sie investieren heute <strong>1.000&nbsp;€</strong> in Nike-Aktien, <strong>vier Wochen nach der Ankündigung</strong> in den beiden Szenarien.</li>
+            <li>Sie verkaufen diese Aktien in zwölf Monaten.</li>
+        </ul>
+    </div>
+
+    <div class="previous-response">
+        … haben Sie geantwortet, dass die <strong>Rendite der Investition</strong>
+        in Nike-Aktien <strong>{{ previous_response }}</strong> wäre.
+    </div>
+
+    <p class="explanation-prompt">
+        Bitte erklären Sie, warum Sie denken, dass dies der Fall wäre.
+    </p>
+
+    {{ formfield 'equ_explanation' }}
+
+    <input type="hidden" name="copy_paste" id="id_copy_paste" value="False">
+
+    <br>
+    {{ next_button }}
+
+</div>
+{{ endblock }}
+
+{{ block scripts }}
+<script>
+    // Funktion zum Aufklappen der Szenarien (analog zur Vorseite)
+    function toggleScenario(num) {
+        var detail = document.getElementById('detail-s' + num);
+        var arrow = document.getElementById('arrow-s' + num);
+        if (detail.classList.contains('open')) {
+            detail.classList.remove('open');
+            arrow.innerHTML = '&#9654;';
+        } else {
+            detail.classList.add('open');
+            arrow.innerHTML = '&#9660;';
+        }
+    }
+
+    // Copy-paste detection
+    document.addEventListener('DOMContentLoaded', function() {
+        // ID bei oTree formfields ist standardmäßig id_ + Feldname
+        var textarea = document.getElementById('id_equ_explanation');
+        var cpField = document.getElementById('id_copy_paste');
+        if (textarea) {
+            textarea.addEventListener('paste', function() {
+                cpField.value = 'True';
+            });
+        }
+    });
+</script>
+{{ endblock }}

@@ -1,0 +1,298 @@
+{{ block title }}
+    Investitionsentscheidung
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    .esg-container {
+        max-width: 860px;
+        margin: 0 auto;
+    }
+
+    /* ── Intro ────────────────────────────────────────────── */
+    .esg-intro {
+        background: #f5f7fa;
+        border-left: 4px solid #1565c0;
+        border-radius: 6px;
+        padding: 20px 24px;
+        line-height: 1.75;
+        color: #333;
+        margin-bottom: 28px;
+    }
+    .esg-intro p { margin: 0 0 12px 0; }
+    .esg-intro p:last-child { margin-bottom: 0; }
+
+    /* ── Prompt ───────────────────────────────────────────── */
+    .esg-prompt {
+        font-weight: 600;
+        font-size: 1.05em;
+        margin: 0 0 20px 0;
+        color: #222;
+    }
+
+    /* ── Fund cards (all neutral) ────────────────────────── */
+    .fund-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-bottom: 24px;
+    }
+    @media (max-width: 740px) {
+        .fund-cards { grid-template-columns: 1fr; }
+    }
+    .fund-card {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #d0d0d0;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        transition: box-shadow 0.15s;
+    }
+    .fund-card:hover {
+        box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    }
+    .fund-card-header {
+        padding: 12px 16px;
+        font-weight: 700;
+        font-size: 1em;
+        color: #fff;
+        text-align: center;
+        background: #546e7a;
+    }
+    .fund-card-name {
+        text-align: center;
+        padding: 12px 16px 4px;
+        font-weight: 600;
+        font-size: 0.95em;
+        color: #333;
+    }
+    .fund-card-desc {
+        padding: 4px 16px 14px;
+        font-size: 0.88em;
+        line-height: 1.65;
+        color: #555;
+    }
+    .fund-card-details {
+        padding: 0 16px 14px;
+        flex: 1;
+    }
+    .fund-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 0.91em;
+    }
+    .fund-row:last-child { border-bottom: none; }
+    .fund-label { font-weight: 600; color: #444; }
+    .fund-value { text-align: right; color: #333; }
+
+    /* ── Allocation input ────────────────────────────────── */
+    .fund-alloc-row {
+        padding: 12px 16px 16px;
+        text-align: center;
+        border-top: 1px solid #eee;
+        background: #fafafa;
+    }
+    .fund-alloc-label {
+        font-size: 0.85em;
+        font-weight: 600;
+        color: #444;
+        margin-bottom: 8px;
+    }
+    .fund-alloc-input-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+    .fund-alloc-input-wrap input[type="number"] {
+        width: 90px;
+        padding: 8px 10px;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 1.05em;
+        font-weight: 600;
+        transition: border-color 0.15s;
+    }
+    .fund-alloc-input-wrap input[type="number"]:focus {
+        border-color: #1565c0;
+        outline: none;
+    }
+    .fund-alloc-unit {
+        font-size: 0.95em;
+        color: #555;
+        font-weight: 500;
+    }
+
+    /* ── Sum display ─────────────────────────────────────── */
+    .sum-row {
+        max-width: 860px;
+        margin: 0 auto 28px auto;
+        padding: 12px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 1.05em;
+        text-align: center;
+        transition: background 0.2s, color 0.2s;
+    }
+    .sum-ok { background: #e8f5e9; color: #2e7d32; }
+    .sum-bad { background: #fbe9e7; color: #c62828; }
+
+    /* ── Collapsible SFDR footnote ───────────────────────── */
+    .sfdr-toggle {
+        display: inline-block;
+        cursor: pointer;
+        color: #666;
+        font-size: 0.88em;
+        margin-bottom: 24px;
+        border-bottom: 1px dashed #999;
+        user-select: none;
+    }
+    .sfdr-toggle:hover { color: #333; }
+    .sfdr-toggle .sfdr-arrow { font-size: 0.8em; margin-right: 4px; }
+    .sfdr-detail {
+        display: none;
+        max-width: 700px;
+        margin-bottom: 24px;
+        padding: 14px 18px;
+        background: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        font-size: 0.88em;
+        line-height: 1.65;
+        color: #555;
+    }
+    .sfdr-detail.open { display: block; }
+    .sfdr-detail p { margin: 0 0 8px 0; }
+    .sfdr-detail p:last-child { margin-bottom: 0; }
+</style>
+{{ endblock }}
+
+{{ block content }}
+<div class="esg-container">
+
+    <!-- ── Intro ──────────────────────────────────────────── -->
+    <div class="esg-intro">
+        <p>
+            Stellen Sie sich vor, Sie möchten insgesamt
+            <strong>250&nbsp;EUR</strong> monatlich investieren. Sie können den
+            Betrag frei auf die folgenden drei Fonds aufteilen – Sie müssen
+            nicht alles in einen einzigen Fonds investieren.
+        </p>
+        <p>
+            Bitte lesen Sie die Beschreibungen und verteilen Sie anschließend
+            Ihre 250&nbsp;EUR.
+        </p>
+    </div>
+
+    <!-- ── Allocation prompt ──────────────────────────────── -->
+    <p class="esg-prompt">Bitte verteilen Sie Ihre 250&nbsp;EUR auf die drei Fonds:</p>
+
+    <!-- ── Fund cards (order randomized server-side) ──────── -->
+    <div class="fund-cards">
+        {{ for fund in funds }}
+        <div class="fund-card">
+            <div class="fund-card-header">{{ fund.label }}</div>
+            <div class="fund-card-name">{{ fund.name }}</div>
+            <div class="fund-card-desc">{{ fund.desc }}</div>
+            <div class="fund-card-details">
+                <div class="fund-row"><span class="fund-label">SFDR</span><span class="fund-value">{{ fund.sfdr }}</span></div>
+                <div class="fund-row"><span class="fund-label">Kosten (TER)</span><span class="fund-value">{{ fund.ter }}</span></div>
+                <div class="fund-row"><span class="fund-label">&Oslash Rendite (5J)</span><span class="fund-value">{{ fund.ret }}</span></div>
+            </div>
+            <div class="fund-alloc-row">
+                <div class="fund-alloc-label">Ihr Betrag</div>
+                <div class="fund-alloc-input-wrap">
+                    <input type="number" name="{{ fund.field }}" id="id_{{ fund.field }}" min="0" max="250" value="0">
+                    <span class="fund-alloc-unit">EUR</span>
+                </div>
+            </div>
+        </div>
+        {{ endfor }}
+    </div>
+
+    <div id="sum-display" class="sum-row sum-bad">
+        Summe: <span id="sum-value">0</span> / 250 EUR
+    </div>
+
+    <!-- ── Collapsible SFDR info ──────────────────────────── -->
+    <span class="sfdr-toggle" onclick="toggleSfdr()">
+        <span class="sfdr-arrow" id="sfdr-arrow">&#9654;</span>
+        Was bedeutet die SFDR-Klassifizierung?
+    </span>
+    <div class="sfdr-detail" id="sfdr-detail">
+        <p>
+            Die SFDR (Sustainable Finance Disclosure Regulation) ist eine
+            EU-Verordnung, die Finanzprodukte nach ihrem Nachhaltigkeitsansatz
+            einstuft:
+        </p>
+        <p>
+            <strong>Artikel 6</strong> – Der Fonds berücksichtigt
+            Nachhaltigkeitsrisiken in seiner Analyse, verfolgt aber kein
+            explizites nachhaltiges Anlageziel.
+        </p>
+        <p>
+            <strong>Artikel 8</strong> – Der Fonds fördert ökologische oder
+            soziale Merkmale als Teil seiner Anlagestrategie.
+        </p>
+        <p>
+            <strong>Artikel 9</strong> – Der Fonds verfolgt ein konkretes
+            Nachhaltigkeitsziel als Kernbestandteil seiner Strategie.
+        </p>
+    </div>
+
+    {{ next_button }}
+
+</div>
+{{ endblock }}
+
+{{ block scripts }}
+<script>
+    function toggleSfdr() {
+        var detail = document.getElementById('sfdr-detail');
+        var arrow = document.getElementById('sfdr-arrow');
+        if (detail.classList.contains('open')) {
+            detail.classList.remove('open');
+            arrow.innerHTML = '&#9654;';
+        } else {
+            detail.classList.add('open');
+            arrow.innerHTML = '&#9660;';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var fields = ['esg_alloc_a', 'esg_alloc_b', 'esg_alloc_c'];
+
+        function updateSum() {
+            var total = 0;
+            fields.forEach(function (f) {
+                var el = document.getElementById('id_' + f);
+                if (el) {
+                    var val = parseInt(el.value, 10);
+                    if (!isNaN(val)) total += val;
+                }
+            });
+            var display = document.getElementById('sum-display');
+            var span = document.getElementById('sum-value');
+            span.textContent = total.toLocaleString('de-DE');
+            if (total === 250) {
+                display.className = 'sum-row sum-ok';
+            } else {
+                display.className = 'sum-row sum-bad';
+            }
+        }
+
+        fields.forEach(function (f) {
+            var el = document.getElementById('id_' + f);
+            if (el) {
+                el.addEventListener('input', updateSum);
+            }
+        });
+
+        updateSum();
+    });
+</script>
+{{ endblock }}

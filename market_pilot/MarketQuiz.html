@@ -1,0 +1,140 @@
+{{ block title }}
+    Verständnisfragen
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    .quiz-container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    .quiz-block {
+        background: #f5f7fa;
+        border-left: 4px solid #1565c0;
+        border-radius: 6px;
+        padding: 18px 22px;
+        margin-bottom: 24px;
+    }
+    .quiz-block h3 {
+        margin: 0 0 10px 0;
+        font-size: 1.05em;
+    }
+    .quiz-block .table {
+        margin-bottom: 0;
+    }
+    .tooltip-trigger {
+        text-decoration: underline dotted;
+        cursor: help;
+        position: relative;
+    }
+    .tooltip-trigger .tooltip-box {
+        display: none;
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 280px;
+        background: #f0f4ff;
+        border: 1px solid #b0c4de;
+        border-radius: 6px;
+        padding: 10px 12px;
+        font-size: 0.9em;
+        font-weight: normal;
+        font-style: normal;
+        line-height: 1.5;
+        color: #333;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        z-index: 10;
+    }
+    .tooltip-trigger:hover .tooltip-box { display: block; }
+</style>
+{{ endblock }}
+
+{{ block content }}
+<div class="quiz-container">
+
+    <p style="margin-bottom: 24px;">
+        Bitte geben Sie f&uuml;r jede der folgenden Transaktionen an,
+        wer das Geld und wer das Produkt erh&auml;lt.
+    </p>
+
+    <!-- Frage 1 -->
+    <div class="quiz-block">
+        <h3>Situation 1</h3>
+        <p>
+            <b>Sie kaufen ein Handy auf
+            <span class="tooltip-trigger">Kleinanzeigen
+                <span class="tooltip-box">
+                    Kleinanzeigen ist eine Webseite, auf der Gegenst&auml;nde von Privatpersonen
+                    angeboten werden k&ouml;nnen. &Auml;hnlich wie z.&thinsp;B. eBay oder Vinted.
+                </span>
+            </span>
+            von einer Privatperson.</b>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width:50%;">Wer erh&auml;lt das Geld?</th>
+                    <th style="width:50%;">Wer erh&auml;lt das Handy?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ formfield 'q1_money' }}</td>
+                    <td>{{ formfield 'q1_product' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Frage 2 -->
+    <div class="quiz-block">
+        <h3>Situation 2</h3>
+        <p>
+            <b>Sie kaufen ein neues Handy direkt auf der Website des Herstellers.</b>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width:50%;">Wer erh&auml;lt das Geld?</th>
+                    <th style="width:50%;">Wer erh&auml;lt das Handy?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ formfield 'q2_money' }}</td>
+                    <td>{{ formfield 'q2_product' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Frage 3 -->
+    <div class="quiz-block">
+        <h3>Situation 3</h3>
+        <p>
+            <b>Sie kaufen einen Gebrauchtwagen von einer Privatperson &uuml;ber
+            <span class="tooltip-trigger"><u>mobile.de</u><span class="tooltip-box">
+                    mobile.de ist eine Webseite, auf der Gebrauchtwagen angeboten und gekauft werden k&ouml;nnen.
+                </span></span>.</b>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width:50%;">Wer erh&auml;lt das Geld?</th>
+                    <th style="width:50%;">Wer erh&auml;lt das Auto?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ formfield 'q3_money' }}</td>
+                    <td>{{ formfield 'q3_product' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {{ next_button }}
+
+</div>
+{{ endblock }}

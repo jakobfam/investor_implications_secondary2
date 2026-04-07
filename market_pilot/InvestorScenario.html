@@ -1,0 +1,174 @@
+{{ block title }}
+    Investitionsvergleich
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    .scenario-container {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+    .scenario-intro {
+        font-size: 1.05em;
+        line-height: 1.7;
+        margin-bottom: 24px;
+    }
+
+    /* ── Person cards ─────────────────────────────────────── */
+    .person-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        max-width: 720px;
+        margin: 0 auto 32px auto;
+    }
+    @media (max-width: 700px) {
+        .person-cards { grid-template-columns: 1fr; }
+    }
+    .person-card {
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    .person-card-header {
+        padding: 12px 16px;
+        font-weight: 700;
+        font-size: 1.05em;
+        color: #fff;
+        text-align: center;
+    }
+    .person-card-body {
+        padding: 16px;
+        font-size: 0.93em;
+        line-height: 1.7;
+        flex: 1;
+    }
+    .person-card-body .detail-label {
+        font-weight: 700;
+        display: inline;
+    }
+    .person-card-body p { margin: 0 0 10px 0; }
+    .person-card-body p:last-child { margin-bottom: 0; }
+
+    /* Card colours */
+    .card-x { background: #e3f2fd; border: 2px solid #1565c0; }
+    .card-x .person-card-header { background: #1565c0; }
+    .card-z { background: #e8f5e9; border: 2px solid #2e7d32; }
+    .card-z .person-card-header { background: #2e7d32; }
+
+    /* ── Question sections ─────────────────────────────────── */
+    .question-section {
+        background: #f5f7fa;
+        border-left: 4px solid #1565c0;
+        border-radius: 6px;
+        padding: 20px 24px;
+        margin-bottom: 24px;
+    }
+    .question-section h3 {
+        margin: 0 0 14px 0;
+        font-size: 1.05em;
+    }
+    .input-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+    .input-row label {
+        min-width: 200px;
+        font-weight: 600;
+    }
+    .input-row input[type="number"] {
+        width: 120px;
+        padding: 6px 10px;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        font-size: 1em;
+    }
+    .input-row input[type="number"]:focus {
+        border-color: #1565c0;
+        outline: none;
+    }
+    .input-unit { font-size: 0.95em; color: #555; }
+</style>
+{{ endblock }}
+
+{{ block content }}
+<div class="scenario-container">
+
+    <div class="scenario-intro">
+        <p>
+            Stellen Sie sich zwei verschiedene Personen vor:
+            <strong>Person&nbsp;X</strong> und <strong>Person&nbsp;Z</strong>.
+            Jede dieser Personen erbt <strong>10.000&nbsp;&euro;</strong> und beschlie&szlig;t,
+            diesen Betrag f&uuml;r <strong>f&uuml;nf Jahre</strong> in Aktien deutscher
+            Unternehmen (aus dem DAX) zu investieren.
+        </p>
+    </div>
+
+    <!-- Person cards -->
+    <div class="person-cards">
+        <div class="person-card card-x">
+            <div class="person-card-header">Person X</div>
+            <div class="person-card-body">
+                <p><span class="detail-label">Wissen:</span> Verf&uuml;gt &uuml;ber sehr viel Wissen &uuml;ber Wirtschaft und den Aktienmarkt.</p>
+                <p><span class="detail-label">Aufwand:</span> Verbringt viel Zeit damit, Gesch&auml;ftsberichte zu lesen und Bilanzen zu analysieren.</p>
+                <p><span class="detail-label">Strategie:</span> W&auml;hlt gezielt die (seiner Meinung nach) 10 besten Aktien aus dem DAX aus.</p>
+                <p><span class="detail-label">Monitoring:</span> Beobachtet den Markt t&auml;glich und schichtet sein Portfolio aktiv um, wenn er Chancen sieht.</p>
+            </div>
+        </div>
+        <div class="person-card card-z">
+            <div class="person-card-header">Person Z</div>
+            <div class="person-card-body">
+                <p><span class="detail-label">Wissen:</span> Gibt an, fast nichts &uuml;ber die B&ouml;rse oder Wirtschaft zu wissen.</p>
+                <p><span class="detail-label">Aufwand:</span> Investiert minimalen Zeitaufwand in die Recherche einzelner Unternehmen.</p>
+                <p><span class="detail-label">Strategie:</span> Investiert den gesamten Betrag einfach in einen DAX-ETF (einen kosteng&uuml;nstigen Indexfonds).</p>
+                <p><span class="detail-label">Monitoring:</span> K&uuml;mmert sich w&auml;hrend der f&uuml;nf Jahre nicht weiter um die Anlage.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question 1: Renditeerwartung -->
+    <div class="question-section">
+        <h3>1.) Rendite-Erwartung</h3>
+        <p>
+            Wie hoch sch&auml;tzen Sie den Gewinn (in Euro) nach Ablauf der
+            f&uuml;nf Jahre f&uuml;r folgende Personen ein?
+        </p>
+        <div class="input-row">
+            <label>Gesch&auml;tzter Gewinn von Person&nbsp;X:</label>
+            <input type="number" name="inv_profit_x" id="id_inv_profit_x" step="1">
+            <span class="input-unit">&euro;</span>
+        </div>
+        <div class="input-row">
+            <label>Gesch&auml;tzter Gewinn von Person&nbsp;Z:</label>
+            <input type="number" name="inv_profit_z" id="id_inv_profit_z" step="1">
+            <span class="input-unit">&euro;</span>
+        </div>
+    </div>
+
+    <!-- Question 2: Risiko-Einschätzung -->
+    <div class="question-section">
+        <h3>2.) Risiko-Einsch&auml;tzung</h3>
+        <p>
+            Wie hoch sch&auml;tzen Sie die Wahrscheinlichkeit (in Prozent) ein,
+            dass die jeweilige Person nach f&uuml;nf Jahren <strong>weniger Geld</strong>
+            hat als zu Beginn?
+        </p>
+        <div class="input-row">
+            <label>Wahrscheinlichkeit f&uuml;r Person&nbsp;X:</label>
+            <input type="number" name="inv_risk_x" id="id_inv_risk_x" min="0" max="100" step="1">
+            <span class="input-unit">%</span>
+        </div>
+        <div class="input-row">
+            <label>Wahrscheinlichkeit f&uuml;r Person&nbsp;Z:</label>
+            <input type="number" name="inv_risk_z" id="id_inv_risk_z" min="0" max="100" step="1">
+            <span class="input-unit">%</span>
+        </div>
+    </div>
+
+    {{ next_button }}
+
+</div>
+{{ endblock }}

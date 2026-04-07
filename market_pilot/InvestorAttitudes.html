@@ -1,0 +1,152 @@
+{{ block title }}
+    Einstellungen zum Aktienmarkt
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    .att-container {
+        max-width: 900px; /* Leicht erhöht für bessere Lesbarkeit */
+        margin: 0 auto;
+    }
+    .att-intro {
+        font-size: 1.05em;
+        line-height: 1.7;
+        margin-bottom: 10px;
+    }
+    .likert-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 28px;
+        table-layout: fixed; /* Erzeugt gleichmäßige Spaltenbreiten */
+    }
+    /* Spaltenbreiten definieren */
+    .likert-table th:first-child, 
+    .likert-table td:first-child {
+        width: 50%;
+        text-align: left;
+    }
+    .likert-table th:not(:first-child), 
+    .likert-table td:not(:first-child) {
+        width: 10%;
+        text-align: center;
+    }
+
+    .likert-table th {
+        padding: 8px 4px;
+        font-size: 0.85em;
+        color: #555;
+        font-weight: normal;
+        vertical-align: bottom;
+    }
+    .label-row th {
+        border-bottom: none;
+        line-height: 1.2;
+        color: #888;
+        font-style: italic;
+    }
+    .number-row th {
+        border-bottom: 2px solid #ccc;
+        font-weight: bold;
+        padding-bottom: 12px;
+    }
+
+    .likert-table td {
+        padding: 14px 8px;
+        border-bottom: 1px solid #eee;
+        vertical-align: middle;
+    }
+    .likert-table td:first-child {
+        font-size: 0.95em;
+        line-height: 1.6;
+        color: #333;
+        padding-right: 15px;
+    }
+    .likert-table tr:hover {
+        background: #f5f7fa;
+    }
+    
+    /* Radio Button Styling für bessere Klickbarkeit */
+    input[type="radio"] {
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+</style>
+{{ endblock }}
+
+{{ block content }}
+<div class="att-container">
+
+    <div class="att-intro">
+        <p>
+            Bitte geben Sie f&uuml;r jede der folgenden Aussagen an, inwieweit diese
+            auf Ihre pers&ouml;nliche Meinung zutrifft.
+        </p>
+    </div>
+
+    <table class="likert-table">
+        <thead>
+            <tr class="label-row">
+                <th></th>
+                <th>Stimme gar nicht zu</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Stimme voll und ganz zu</th>
+            </tr>
+            <tr class="number-row">
+                <th></th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Um am Aktienmarkt erfolgreich zu sein, ist eine kontinuierliche Analyse von Unternehmensberichten und Wirtschaftsdaten zwingend erforderlich.</td>
+                <td><input type="radio" name="att_info_friction" value="1"></td>
+                <td><input type="radio" name="att_info_friction" value="2"></td>
+                <td><input type="radio" name="att_info_friction" value="3"></td>
+                <td><input type="radio" name="att_info_friction" value="4"></td>
+                <td><input type="radio" name="att_info_friction" value="5"></td>
+            </tr>
+            <tr>
+                <td>Die Anforderungen, um die Risiken von Einzelaktien korrekt zu bewerten, &uuml;bersteigen die F&auml;higkeiten eines durchschnittlichen Privatanlegers.</td>
+                <td><input type="radio" name="att_complexity" value="1"></td>
+                <td><input type="radio" name="att_complexity" value="2"></td>
+                <td><input type="radio" name="att_complexity" value="3"></td>
+                <td><input type="radio" name="att_complexity" value="4"></td>
+                <td><input type="radio" name="att_complexity" value="5"></td>
+            </tr>
+            <tr>
+                <td>Da Aktienpreise alle verf&uuml;gbaren Informationen sofort widerspiegeln, ist es f&uuml;r mich unm&ouml;glich, durch eigene Recherche eine &Uuml;berrendite zu erzielen.</td>
+                <td><input type="radio" name="att_efficient_market" value="1"></td>
+                <td><input type="radio" name="att_efficient_market" value="2"></td>
+                <td><input type="radio" name="att_efficient_market" value="3"></td>
+                <td><input type="radio" name="att_efficient_market" value="4"></td>
+                <td><input type="radio" name="att_efficient_market" value="5"></td>
+            </tr>
+            <tr>
+                <td>Ein breit gestreuter, kosteng&uuml;nstiger ETF ist f&uuml;r den langfristigen Verm&ouml;gensaufbau mathematisch &uuml;berlegen gegen&uuml;ber der Auswahl von Einzelaktien.</td>
+                <td><input type="radio" name="att_delegation" value="1"></td>
+                <td><input type="radio" name="att_delegation" value="2"></td>
+                <td><input type="radio" name="att_delegation" value="3"></td>
+                <td><input type="radio" name="att_delegation" value="4"></td>
+                <td><input type="radio" name="att_delegation" value="5"></td>
+            </tr>
+            <tr>
+                <td>Aktieninvestments erfordern t&auml;gliches Monitoring, um bei Marktschwankungen rechtzeitig aussteigen und Verluste begrenzen zu k&ouml;nnen.</td>
+                <td><input type="radio" name="att_loss_control" value="1"></td>
+                <td><input type="radio" name="att_loss_control" value="2"></td>
+                <td><input type="radio" name="att_loss_control" value="3"></td>
+                <td><input type="radio" name="att_loss_control" value="4"></td>
+                <td><input type="radio" name="att_loss_control" value="5"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{ next_button }}
+
+</div>
+{{ endblock }}

@@ -1,0 +1,29 @@
+{{ block title }}
+    Eine Frage zu Aktienmärkten
+{{ endblock }}
+{{ block content }}
+    Generell werden Aktien teilweise direkt von Unternehmen verkauft (Primärmarkt) und teilweise werden Aktien von Personen/Institutionen verkauft (Sekundärmarkt).
+
+    {{ formfield 'primary_market_pct' }}
+    <p><small>Bitte geben Sie einen Wert zwischen 0 und 100 ein.</small></p>
+    {{ next_button }}
+{{ endblock }}
+
+{{ block scripts }}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var input = document.getElementById("id_primary_market_pct");
+        if (input) {
+            var wrapper = document.createElement("div");
+            wrapper.className = "input-group";
+            input.parentNode.insertBefore(wrapper, input);
+            wrapper.appendChild(input);
+
+            var append = document.createElement("span");
+            append.className = "input-group-text";
+            append.textContent = "%";
+            wrapper.appendChild(append);
+        }
+    });
+</script>
+{{ endblock }}

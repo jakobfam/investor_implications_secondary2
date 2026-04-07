@@ -1,0 +1,63 @@
+{{ block title }}
+    Angaben zu Ihrer Person
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    .demo-container {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+    .demo-intro {
+        background: #f5f7fa;
+        border-left: 4px solid #1565c0;
+        border-radius: 6px;
+        padding: 20px 24px;
+        line-height: 1.75;
+        color: #333;
+        margin-bottom: 28px;
+    }
+    .demo-section {
+        margin-bottom: 20px;
+    }
+</style>
+{{ endblock }}
+
+{{ block content }}
+<div class="demo-container">
+
+    <div class="demo-intro">
+        <p>
+            Bevor wir mit der Studie beginnen, möchten wir Ihnen einige allgemeine
+            Fragen zu Ihrer Person stellen.
+        </p>
+    </div>
+
+    <div class="demo-section">
+        {{ formfield 'age' }}
+    </div>
+
+    <div class="demo-section">
+        {{ formfield 'gender' }}
+    </div>
+
+    <div class="demo-section">
+        {{ formfield 'highest_education' }}
+    </div>
+
+    <div class="demo-section">
+        {{ formfield 'occupation' }}
+    </div>
+
+    <div class="demo-section">
+        {{ formfield 'hh_income' }}
+    </div>
+
+    <div class="demo-section">
+        {{ formfield 'attention_check_1' }}
+    </div>
+
+    {{ next_button }}
+
+</div>
+{{ endblock }}

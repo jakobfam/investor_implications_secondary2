@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herzlich Willkommen!</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container {
+            max-width: 720px;
+            margin: 32px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 36px 40px;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+        p { margin-bottom: 14px; }
+        b { color: #222; }
+        ul {
+            list-style-type: circle;
+            margin: 8px 0 14px 24px;
+        }
+        li { margin-bottom: 4px; }
+        a { color: #1565c0; }
+        a:hover { text-decoration: none; }
+        .consent-box {
+            margin: 24px 0;
+            padding: 18px 20px;
+            background: #f9fafb;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .consent-box label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .consent-box input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: #1565c0;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.05em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .btn:hover { background: #0d47a1; }
+        .btn:disabled {
+            background: #bbb;
+            cursor: not-allowed;
+        }
+        .error-msg {
+            display: none;
+            color: #c62828;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Herzlich Willkommen!</h1>
+
+    <p>
+        Diese Umfrage ist Teil eines aktuellen Forschungsprojekts der Goethe-Universit&auml;t Frankfurt und Johannes Gutenberg-Universit&auml;t Mainz.
+        Wir danken Ihnen, dass Sie unsere Forschung unterst&uuml;tzen. Um m&ouml;glichst aussagekr&auml;ftige Ergebnisse erzielen zu k&ouml;nnen,
+        m&ouml;chten wir Sie bitten, die Fragen in dieser Umfrage <b>allein zu beantworten</b> und sich nicht mit anderen Personen abzusprechen.
+    </p>
+
+    <p><b>Wer ist verantwortlich f&uuml;r die Studie?</b></p>
+    <p>
+        Verantwortlich f&uuml;r die Durchf&uuml;hrung der Studie ist das Frankfurter Labor f&uuml;r Experimentelle Wirtschaftsforschung
+        (FLEX), Goethe-Universit&auml;t, Theodor-W.-Adorno-Platz 4, 60323 Frankfurt am Main.
+    </p>
+
+    <p><b>Welchen Zwecken dient diese Studie?</b></p>
+    <p>
+        Ziel dieser Studie ist es, Einstellungen und Entscheidungen von B&uuml;rgerinnen und B&uuml;rgern in Deutschland besser zu verstehen.
+        Die Wissenschaft ist an m&ouml;glichst verzerrungsfreiem, nat&uuml;rlichem Verhalten interessiert. Wie bei &ouml;konomischen Studien &uuml;blich,
+        erfolgt daher vorab keine umfassende Aufkl&auml;rung &uuml;ber den Forschungshintergrund. S&auml;mtliche relevante Informationen werden Ihnen w&auml;hrend der Studie zur Verf&uuml;gung gestellt.
+    </p>
+
+    <p>
+        <b>Was geschieht mit meinen Daten?
+        <a href="/static/Datenschutzhinweis_Goethe.pdf" target="_blank" rel="noopener noreferrer">(Klicken Sie hier f&uuml;r die Datenschutzerkl&auml;rung)</a>
+        </b>
+    </p>
+    <p>
+        Alle beteiligten Mitarbeiter und Wissenschaftler arbeiten selbstverst&auml;ndlich nach den Vorschriften der Datenschutz-Grundverordnung,
+        dem Bundesdatenschutzgesetz und den einschl&auml;gigen Landesdatenschutzgesetzen. Ihre Daten werden unmittelbar nach der Erhebung pseudonymisiert gespeichert
+        und anschlie&szlig;end statistisch ausgewertet. Aus den Ergebnissen lassen sich anschlie&szlig;end keine R&uuml;ckschl&uuml;sse auf Sie als Person ziehen.
+    </p>
+    <p>
+        F&uuml;r die Studie erheben wir auch sog. &bdquo;besondere Arten personenbezogener Daten&ldquo;, insbesondere Daten, aus denen politische Meinungen oder weltanschauliche
+        &Uuml;berzeugungen hervorgehen, die wir nur mit Ihrer Einwilligung f&uuml;r Forschungszwecke verwenden.
+    </p>
+
+    <p><b>Einwilligungserkl&auml;rung</b></p>
+    <p>
+        Hiermit willige ich in die Verarbeitung meiner personenbezogenen Daten f&uuml;r das Forschungsvorhaben ein. Die Einwilligung kann ich jederzeit widerrufen.
+    </p>
+    <p>
+        Mit meiner Einwilligung erkl&auml;re ich, dass ich
+    </p>
+    <ul>
+        <li>mindestens 18 Jahre alt bin</li>
+        <li>freiwillig an dieser Umfrage teilnehme</li>
+        <li>die Hinweise zur Verwendung meiner Daten und zu meinen Rechten in der Datenschutzerkl&auml;rung gelesen und zur Kenntnis genommen habe.</li>
+    </ul>
+
+    <p>
+        Bitte beachten Sie, dass eine erfolgreiche Teilnahme an dieser Studie nur m&ouml;glich ist, wenn Sie dieser Studie Ihre Aufmerksamkeit widmen.
+        Zu diesem Zweck gibt es zwei Fragen, die Ihre Aufmerksamkeit testen, und welche explizit als solche gekennzeichnet sind.
+        Wenn Sie Fragen zu dieser Studie haben oder auf technische Probleme sto&szlig;en, wenden Sie sich bitte &uuml;ber den von Prolific bereitgestellten Chat an das Forschungsteam.
+        Sollten Sie nach Abschluss der Studie Fragen zu dieser Forschung haben, einschlie&szlig;lich Fragen zu Ihrer Verg&uuml;tung f&uuml;r die Teilnahme, k&ouml;nnen Sie das Forschungsteam ebenfalls &uuml;ber Prolific kontaktieren.
+    </p>
+
+    <p><b>Sind Sie mit der Teilnahme an dieser Studie einverstanden?</b></p>
+    <div class="consent-box">
+        <label>
+            <input type="radio" name="consent_choice" value="1">
+            Ja
+        </label>
+        <label style="margin-top: 10px;">
+            <input type="radio" name="consent_choice" value="0">
+            Nein
+        </label>
+    </div>
+
+    <p class="error-msg" id="error-msg">Bitte w&auml;hlen Sie eine Option aus.</p>
+
+    <button class="btn" id="start-btn">Weiter</button>
+</div>
+
+<script>
+    document.getElementById('start-btn').addEventListener('click', function () {
+        var selected = document.querySelector('input[name="consent_choice"]:checked');
+        var errorMsg = document.getElementById('error-msg');
+
+        if (!selected) {
+            errorMsg.style.display = 'block';
+            return;
+        }
+
+        errorMsg.style.display = 'none';
+
+        // Save consent choice so the oTree Welcome page can read it
+        localStorage.setItem('otree_consent_given', selected.value);
+
+        var url = new URL(window.location.href);
+        url.searchParams.set('welcome_page_ok', '1');
+        window.location.href = url.toString();
+    });
+
+    document.querySelectorAll('input[name="consent_choice"]').forEach(function (r) {
+        r.addEventListener('change', function () {
+            document.getElementById('error-msg').style.display = 'none';
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{{ block title }}
+    CO&#8322;-Einsparung
+{{ endblock }}
+
+{{ block content }}
+
+<p>
+    Eine durchschnittliche Person in Deutschland verursacht &uuml;ber einen Zeitraum von
+    <strong>5 Jahren ca. 50 Tonnen CO&#8322;</strong>.
+    Was glauben Sie: Wie viele CO&#8322;-Emissionen werden &uuml;ber die n&auml;chsten 5 Jahre durch
+    ein Investment von <strong>10.000&nbsp;EUR</strong> in den
+    <em>MSCI World ESG Screened</em> eingespart?
+</p>
+
+<p>
+    Bitte nutzen Sie den Slider, um die Einsparung im Verh&auml;ltnis zum typischen
+    CO&#8322;-Verbrauch einer Person in Deutschland anzugeben.
+</p>
+
+<div style="
+    margin:30px 0;
+    padding:20px;
+    border:1px solid #e0e0e0;
+    border-radius:8px;
+    background:#fafafa;
+">
+
+    <p style="margin-bottom:12px;">
+        <strong>CO&#8322;-Reduktion:</strong>
+        <span id="sliderValue"><strong>0&nbsp;%</strong></span>
+    </p>
+
+    <input
+        type="range"
+        name="co2_reduction_pct"
+        id="co2_reduction_pct"
+        min="0"
+        max="200"
+        step="1"
+        value="0"
+        oninput="document.getElementById('sliderValue').innerHTML = '<strong>' + this.value + '&nbsp;%</strong>';"
+        style="width:100%;"
+        required
+    >
+
+    <div style="
+        display:flex;
+        justify-content:space-between;
+        font-size:0.9em;
+        margin-top:8px;
+        color:#555;
+    ">
+        <span>0 %<br><small>Keine CO&#8322;-Reduktion <br>&uuml;ber 5 Jahre (0 t)</small></span>
+        <span style="text-align:center;">
+            100 %<br>
+            <small>CO&#8322;-Verbrauch einer Person<br>&uuml;ber 5 Jahre (50 t)</small>
+        </span>
+        <span style="text-align:right;">
+            200 %<br>
+            <small>Doppelter CO&#8322;-Verbrauch<br>&uuml;ber 5 Jahre (100 t)</small>
+        </span>
+    </div>
+
+</div>
+
+{{ next_button }}
+
+{{ endblock }}

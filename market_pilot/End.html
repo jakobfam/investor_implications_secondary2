@@ -1,0 +1,37 @@
+{{ block title }}
+    Vielen Dank!
+{{ endblock }}
+{{ block content }}
+    {{ if player.consent }}
+        {{ if player.attention }}
+            <p>
+                Vielen Dank für Ihre Teilnahme an unserer Studie! Ihre Antworten wurden
+                erfolgreich gespeichert.
+            </p>
+            <p>
+                <a href="{{ completed }}" class="btn btn-primary">
+                    Zurück zu Prolific
+                </a>
+            </p>
+        {{ else }}
+            <p>
+                Vielen Dank für Ihre Teilnahme. Leider haben Sie die Aufmerksamkeitsfragen
+                nicht korrekt beantwortet.
+            </p>
+            <p>
+                <a href="{{ no_attention }}" class="btn btn-secondary">
+                    Zurück zu Prolific
+                </a>
+            </p>
+        {{ endif }}
+    {{ else }}
+        <p>
+            Sie haben der Teilnahme nicht zugestimmt. Vielen Dank für Ihr Interesse.
+        </p>
+        <p>
+            <a href="{{ no_consent }}" class="btn btn-secondary">
+                Zurück zu Prolific
+            </a>
+        </p>
+    {{ endif }}
+{{ endblock }}

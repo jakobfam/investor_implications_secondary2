@@ -1,0 +1,47 @@
+{{ block title }}
+    
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    .important-container {
+        max-width: 620px;
+        margin: 0 auto;
+    }
+    .important-heading {
+        color: #c62828;
+        font-size: 1.3em;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    .important-container p {
+        font-size: 1.05em;
+        line-height: 1.7;
+        margin-bottom: 16px;
+    }
+</style>
+{{ endblock }}
+
+{{ block content }}
+<div class="important-container">
+
+    <p class="important-heading">Wichtig</p>
+
+    <p>
+        Auf der nächsten Seite werden Sie auf eine <strong>offene Frage</strong> stoßen,
+        in der wir Sie bitten, die Vorhersage zu erklären, die Sie auf der vorherigen
+        Seite getroffen haben.
+    </p>
+    <p>
+        Unserer Erfahrung nach kann die Beantwortung dieser Frage etwa
+        <strong>2 Minuten</strong> dauern.
+    </p>
+    <p>
+        Ihre Antworten sind für unser Forschungsprojekt sehr wertvoll. Bitte nehmen
+        Sie sich daher die Zeit, <strong>sorgfältig zu antworten</strong>.
+    </p>
+
+    {{ next_button }}
+
+</div>
+{{ endblock }}

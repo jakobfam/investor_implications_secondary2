@@ -1,0 +1,224 @@
+{{ block title }}
+    Märkte im Alltag
+{{ endblock }}
+
+{{ block styles }}
+<style>
+    /* ── Modal overlay ───────────────────────────────────── */
+    .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+    .modal-box {
+        background: #fff;
+        border-radius: 12px;
+        max-width: 480px;
+        width: 90%;
+        padding: 32px 28px 24px 28px;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    }
+    .modal-icon {
+        font-size: 2.4em;
+        margin-bottom: 12px;
+    }
+    .modal-box h3 {
+        margin: 0 0 14px 0;
+        font-size: 1.2em;
+    }
+    .modal-box p {
+        font-size: 1em;
+        line-height: 1.6;
+        color: #333;
+        margin-bottom: 22px;
+    }
+    .modal-btn {
+        background: #1565c0;
+        color: #fff;
+        border: none;
+        padding: 10px 32px;
+        border-radius: 6px;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .modal-btn:hover { background: #0d47a1; }
+
+    /* ── Page content (dimmed until modal dismissed) ────── */
+    .page-content.dimmed { filter: blur(3px); pointer-events: none; }
+
+    /* ── Card layout ─────────────────────────────────────── */
+    .intro-text {
+        font-size: 1.05em;
+        line-height: 1.7;
+        max-width: 720px;
+        margin: 0 auto 28px auto;
+    }
+    .section-heading {
+        text-align: center;
+        font-size: 1.15em;
+        font-weight: 700;
+        margin: 32px 0 20px 0;
+        letter-spacing: 0.02em;
+    }
+    .market-cards {
+        display: flex;
+        gap: 24px;
+        max-width: 760px;
+        margin: 0 auto 32px auto;
+        flex-wrap: wrap;
+    }
+    .market-card {
+        flex: 1 1 320px;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 2px solid transparent;
+    }
+    .market-card-header {
+        padding: 12px 18px;
+        font-weight: 700;
+        font-size: 1.05em;
+        color: #fff;
+    }
+    .market-card-body {
+        padding: 18px;
+        line-height: 1.65;
+    }
+    .example-box {
+        margin-top: 14px;
+        padding: 12px 14px;
+        border-radius: 6px;
+        font-size: 0.95em;
+        line-height: 1.55;
+    }
+    .card-primary { border-color: #1565c0; background: #e3f2fd; }
+    .card-primary .market-card-header { background: #1565c0; }
+    .card-primary .example-box { background: #bbdefb; }
+    .card-secondary { border-color: #6a1b9a; background: #f3e5f5; }
+    .card-secondary .market-card-header { background: #6a1b9a; }
+    .card-secondary .example-box { background: #e1bee7; }
+
+    /* ── Bridge section ───────────────────────────────────── */
+    .bridge-section {
+        max-width: 720px;
+        margin: 0 auto 32px auto;
+        background: #fff3e0;
+        border: 2px solid #ef6c00;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .bridge-header {
+        background: #ef6c00;
+        color: #fff;
+        padding: 12px 18px;
+        font-weight: 700;
+        font-size: 1.05em;
+    }
+    .bridge-body {
+        padding: 18px;
+        line-height: 1.65;
+        font-size: 1.05em;
+    }
+    .bridge-body p { margin-bottom: 12px; }
+    .bridge-body p:last-child { margin-bottom: 0; }
+</style>
+{{ endblock }}
+
+{{ block content }}
+
+<!-- Modal -->
+<div class="modal-overlay" id="attention-modal">
+    <div class="modal-box">
+        <div class="modal-icon">&#128218;</div>
+        <h3>Hinweis</h3>
+        <p>
+            Bitte lesen Sie den folgenden Text aufmerksam durch.
+            Im Anschluss werden wir Ihnen hierzu einige Fragen stellen.
+        </p>
+        <button type="button" class="modal-btn" onclick="dismissModal()">Verstanden</button>
+    </div>
+</div>
+
+<!-- Page content -->
+<div class="page-content dimmed" id="page-content">
+
+    <div class="intro-text">
+        <p>
+            Märkte sind überall. Jeden Tag nehmen wir an vielen verschiedenen Märkten teil –
+            wenn wir Lebensmittel kaufen, ein Zugticket buchen oder etwas verkaufen, das wir
+            nicht mehr brauchen. Märkte sind einfach Orte, an denen Käufer und Verkäufer
+            zusammenkommen, um Waren oder Dienstleistungen zu tauschen.
+        </p>
+        <p>
+            Aber nicht alle Märkte funktionieren gleich. Es gibt grundlegend verschiedene
+            Arten von Märkten. Im Folgenden erklären wir Ihnen zwei Arten von Märkten.
+        </p>
+    </div>
+
+    <div class="section-heading">Zwei Arten von Märkten</div>
+
+    <div class="market-cards">
+        <div class="market-card card-primary">
+            <div class="market-card-header">Primärmärkte</div>
+            <div class="market-card-body">
+                Auf einem Primärmarkt kaufen Sie etwas direkt von demjenigen, der es
+                hergestellt oder erschaffen hat. Ihr Geld geht an den Hersteller.
+                <div class="example-box">
+                    <em>Beispiel:</em> Sie kaufen ein T-Shirt auf der Website des
+                    Bekleidungsunternehmens, das es hergestellt hat. Ihr Geld geht direkt
+                    an das Unternehmen.
+                </div>
+            </div>
+        </div>
+
+        <div class="market-card card-secondary">
+            <div class="market-card-header">Sekundärmärkte</div>
+            <div class="market-card-body">
+                Auf einem Sekundärmarkt kaufen Sie etwas von jemandem, der es vorher
+                besessen hat, nicht aber der eigentliche Hersteller des Produktes ist.
+                Der ursprüngliche Hersteller ist an der Transaktion nicht beteiligt.
+                Ihr Geld geht an den Vorbesitzer – nicht an denjenigen, der das Produkt
+                ursprünglich hergestellt hat.
+                <div class="example-box">
+                    <em>Beispiel:</em> Sie kaufen ein T-Shirt auf einem Flohmarkt von
+                    jemandem, der es vorher besessen hat. Ihr Geld geht an diese Person.
+                    Das Bekleidungsunternehmen erhält von dieser Transaktion nichts.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-heading">Börsen sind Sekundärmärkte</div>
+
+    <div class="bridge-section">
+        <div class="bridge-header">Aktienhandel an der Börse</div>
+        <div class="bridge-body">
+            <p>
+                Wenn Sie im Alltag an der Börse Aktien eines Unternehmens kaufen, kaufen Sie diese
+                Aktien von einer anderen Person oder Institution, die diese Aktien zuvor
+                besessen hat. Ihr Geld geht an den vorherigen Besitzer der Aktie – nicht
+                an das Unternehmen selbst.
+            </p>
+            <p>
+                Das Unternehmen ist an dieser Transaktion nicht direkt beteiligt.
+                Die Börse ist damit ein Sekundärmarkt.
+            </p>
+        </div>
+    </div>
+
+    {{ next_button }}
+
+</div>
+
+<script>
+    function dismissModal() {
+        document.getElementById('attention-modal').style.display = 'none';
+        document.getElementById('page-content').classList.remove('dimmed');
+    }
+</script>
+{{ endblock }}
