@@ -187,17 +187,17 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     att_complexity = models.IntegerField(
-        label='Die Anforderungen, um die Risiken von Einzelaktien korrekt zu bewerten, übersteigen die Fähigkeiten eines durchschnittlichen Privatanlegers.',
+        label='Die Risiken einzelner Aktien richtig einzuschätzen, ist für einen durchschnittlichen Privatanleger zu anspruchsvoll.',
         choices=[1, 2, 3, 4, 5],
         widget=widgets.RadioSelect,
     )
     att_efficient_market = models.IntegerField(
-        label='Da Aktienpreise alle verfügbaren Informationen sofort widerspiegeln, ist es für mich unmöglich, durch eigene Recherche eine höhere Rendite als der Durchschnitt zu erzielen.',
+        label='Durch eigene Recherche ist es nicht möglich, dauerhaft eine höhere Rendite als der Gesamtmarkt zu erzielen, da Aktienkurse bereits alle verfügbaren Informationen widerspiegeln.',
         choices=[1, 2, 3, 4, 5],
         widget=widgets.RadioSelect,
     )
     att_delegation = models.IntegerField(
-        label='Ein breit gestreuter, kostengünstiger ETF ist für den langfristigen Vermögensaufbau mathematisch überlegen gegenüber der Auswahl von Einzelaktien.',
+        label='Für den langfristigen Vermögensaufbau ist ein breit gestreuter, kostengünstiger ETF besser geeignet als die gezielte Auswahl einzelner Aktien.',
         choices=[1, 2, 3, 4, 5],
         widget=widgets.RadioSelect,
     )

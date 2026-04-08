@@ -141,6 +141,45 @@
     .sum-ok { background: #e8f5e9; color: #2e7d32; }
     .sum-bad { background: #fbe9e7; color: #c62828; }
 
+    /* ── SFDR inline tooltip ─────────────────────────────── */
+    .sfdr-info {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        text-align: center;
+        border-radius: 50%;
+        background: #90a4ae;
+        color: #fff;
+        font-size: 0.7em;
+        font-weight: 700;
+        font-style: normal;
+        cursor: help;
+        position: relative;
+        vertical-align: middle;
+        margin-left: 4px;
+    }
+    .sfdr-info .sfdr-tip {
+        display: none;
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 240px;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 10px 12px;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 1.5;
+        color: #333;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        z-index: 20;
+        text-align: left;
+    }
+    .sfdr-info:hover .sfdr-tip { display: block; }
+
     /* ── Collapsible SFDR footnote ───────────────────────── */
     .sfdr-toggle {
         display: inline-block;
@@ -199,9 +238,9 @@
             <div class="fund-card-name">{{ fund.name }}</div>
             <div class="fund-card-desc">{{ fund.desc }}</div>
             <div class="fund-card-details">
-                <div class="fund-row"><span class="fund-label">SFDR</span><span class="fund-value">{{ fund.sfdr }}</span></div>
+                <div class="fund-row"><span class="fund-label">SFDR</span><span class="fund-value">{{ fund.sfdr }}<span class="sfdr-info">i<span class="sfdr-tip sfdr-tip-{{ fund.key }}"></span></span></span></div>
                 <div class="fund-row"><span class="fund-label">Kosten (TER)</span><span class="fund-value">{{ fund.ter }}</span></div>
-                <div class="fund-row"><span class="fund-label">&Oslash Rendite (5J)</span><span class="fund-value">{{ fund.ret }}</span></div>
+                <div class="fund-row"><span class="fund-label">&Oslash; Rendite (5J, vor Kosten)</span><span class="fund-value">{{ fund.ret }}</span></div>
             </div>
             <div class="fund-alloc-row">
                 <div class="fund-alloc-label">Ihr Betrag</div>
@@ -264,6 +303,17 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+        // SFDR tooltips
+        var sfdrTips = {
+            a: 'Artikel 6 – Der Fonds berücksichtigt Nachhaltigkeitsrisiken, verfolgt aber kein explizites nachhaltiges Anlageziel.',
+            b: 'Artikel 8 – Der Fonds fördert ökologische oder soziale Merkmale als Teil seiner Anlagestrategie.',
+            c: 'Artikel 9 – Der Fonds verfolgt ein konkretes Nachhaltigkeitsziel als Kernbestandteil seiner Strategie.',
+        };
+        document.querySelectorAll('[class*="sfdr-tip-"]').forEach(function (el) {
+            var key = el.className.match(/sfdr-tip-(\w)/);
+            if (key && sfdrTips[key[1]]) el.textContent = sfdrTips[key[1]];
+        });
+
         var fields = ['esg_alloc_a', 'esg_alloc_b', 'esg_alloc_c'];
 
         function updateSum() {
