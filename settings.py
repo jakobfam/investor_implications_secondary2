@@ -8,9 +8,9 @@ SESSION_CONFIGS = [
         num_demo_participants=10,
         control_pct=15,  # percent allocated to control (rest → treatment1)
         prolific=True,
-        link_completed='https://app.prolific.com/submissions/complete?cc=CF11XHAO',
-        link_no_consent='https://app.prolific.com/submissions/complete?cc=CVGDWZOQ',
-        link_no_attention='https://app.prolific.com/submissions/complete?cc=C4B65D7J',
+        link_completed='https://app.prolific.com/submissions/complete?cc=C13CNJTF',
+        link_no_consent='https://app.prolific.com/submissions/complete?cc=C1O46EDD',
+        link_no_attention='https://app.prolific.com/submissions/complete?cc=CAFF9WJT',
     ),
 ]
 
